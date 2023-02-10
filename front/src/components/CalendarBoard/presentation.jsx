@@ -5,7 +5,7 @@ import { Typography } from '@mui/material';
 
 const days = ['日', '月', '火', '水', '木', '金', '土'];
 
-export const CalendarBoard = ({ calendar, month }) => {
+export const CalendarBoard = ({ calendar, month, openAddScheduleDialog }) => {
   console.log(calendar);
   return (
     <Grid2 container className="grid" columns={7} spacing={0}>
@@ -26,7 +26,7 @@ export const CalendarBoard = ({ calendar, month }) => {
       })}
       {calendar.map((day) => {
         return (
-          <Grid2 key={day.toISOString()} xs={1}>
+          <Grid2 key={day.toISOString()} xs={1} onClick={openAddScheduleDialog}>
             <CalendarElement day={day} month={month} />
           </Grid2>
         );

@@ -14,7 +14,7 @@ const initState = {
   isDialogOpen: false, // dialogが開いているかどうか
 };
 
-export const addScheduleReducer = (state = init, { type, payload }) => {
+export const addScheduleReducer = (state = initState, { type, payload }) => {
   switch (type) {
     case ADD_SCHEDULE_SET_VALUE:
       return {

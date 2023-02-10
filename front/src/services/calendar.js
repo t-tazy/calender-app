@@ -16,6 +16,23 @@ export const createCalendar = (calendarState) => {
   });
 };
 
+export const getNextMonth = (calendarState) => {
+  const day = getMonth(calendarState).add(1, 'month');
+  return formatMonth(day);
+};
+
+export const getPrevMonth = (calendarState) => {
+  const day = getMonth(calendarState).add(-1, 'month');
+  return formatMonth(day);
+};
+
+// dayjsインスタンスを受け取り、calendarStateのフォーマットの
+// オブジェクトを返す
+export const formatMonth = (day) => ({
+  month: day.month() + 1,
+  year: day.year(),
+});
+
 // calendar stateのフォーマットのデータを受け取り
 // その月のdayjsインスタンスを返す
 export const getMonth = ({ year, month }) => {
@@ -25,16 +42,16 @@ export const getMonth = ({ year, month }) => {
 // 当日かどうか判定
 // 文字列に変換して比較する
 export const isSameDay = (d1, d2) => {
-  const format = "YYYYMMDD";
+  const format = 'YYYYMMDD';
   return d1.format(format) === d2.format(format);
 };
 
 // 当月がどうか判定
 // 0 (Jan) to 11 (Dec)
 export const isSameMonth = (m1, m2) => {
-  const format = "YYYYMM";
+  const format = 'YYYYMM';
   return m1.format(format) === m2.format(format);
 };
 
 // 月初めか判定
-export const isFirstDay = day => day.date() === 1;
+export const isFirstDay = (day) => day.date() === 1;

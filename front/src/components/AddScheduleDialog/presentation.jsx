@@ -1,6 +1,11 @@
-import { LocationOnOutlined, NotesOutlined } from '@mui/icons-material';
+import {
+  AccessTime,
+  LocationOnOutlined,
+  NotesOutlined,
+} from '@mui/icons-material';
 import { Button, Dialog, DialogContent, TextField } from '@mui/material';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
+import { DatePicker } from '@mui/x-date-pickers';
 
 export const AddScheduleDialog = ({ schedule, closeDialog, setSchedule }) => {
   console.log(schedule, 'schedule');
@@ -17,6 +22,21 @@ export const AddScheduleDialog = ({ schedule, closeDialog, setSchedule }) => {
           onChange={(e) => setSchedule({ title: e.target.value })}
         />
         <Grid2 container spacing={1}>
+          <Grid2 xs={2}>
+            <AccessTime />
+          </Grid2>
+          <Grid2 xs={10}>
+            <DatePicker
+              value={schedule.form.date.format("YYYYMMDD")}
+              onChange={(params) => {
+              {/* paramsはdayjsインスタンス */}
+                setSchedule({ date: params });
+              }}
+              renderInput={(params) => (
+                <TextField variant="standard" fullWidth {...params} />
+              )}
+            />
+          </Grid2>
           <Grid2 xs={2}>
             <LocationOnOutlined />
           </Grid2>

@@ -1,6 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addScheduleOpenDialog } from '../../redux/addSchedule/actions';
+import {
+  addScheduleOpenDialog,
+  addScheduleSetValue,
+} from '../../redux/addSchedule/actions';
 import { createCalendar } from '../../services/calendar';
 
 import { CalendarBoard } from './presentation';
@@ -13,7 +16,10 @@ export const ContainerCalendarBoard = () => {
     <CalendarBoard
       calendar={createCalendar(calendar)}
       month={calendar}
-      openAddScheduleDialog={() => dispatch(addScheduleOpenDialog())}
+      openAddScheduleDialog={(day) => {
+        dispatch(addScheduleOpenDialog());
+        dispatch(addScheduleSetValue({ date: day }));
+      }}
     />
   );
 };

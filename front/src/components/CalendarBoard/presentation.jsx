@@ -26,7 +26,11 @@ export const CalendarBoard = ({ calendar, month, openAddScheduleDialog }) => {
       })}
       {calendar.map((day) => {
         return (
-          <Grid2 key={day.toISOString()} xs={1} onClick={openAddScheduleDialog}>
+          <Grid2
+            key={day.toISOString()}
+            xs={1}
+            onClick={() => openAddScheduleDialog(day)}
+          >
             <CalendarElement day={day} month={month} />
           </Grid2>
         );

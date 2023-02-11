@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addScheduleCloseDialog } from '../../redux/addSchedule/actions';
+import {
+  addScheduleCloseDialog,
+  addScheduleSetValue,
+} from '../../redux/addSchedule/actions';
 import { AddScheduleDialog } from './presentation';
 
 export const ContainerAddScheduleDialog = () => {
@@ -10,6 +13,7 @@ export const ContainerAddScheduleDialog = () => {
     <AddScheduleDialog
       schedule={schedule}
       closeDialog={() => dispatch(addScheduleCloseDialog())}
+      setSchedule={(payload) => dispatch(addScheduleSetValue(payload))}
     />
   );
 };
